@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-container1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-container1
+  template:
+    metadata:
+      labels:
+        app: k8s-container1
+    spec:
+      containers:
+        - name: k8s-container1
+          image: us-central1-docker.pkg.dev/k8s-assignment-428917/k8s-repo/k8s-container1:latest
+          ports:
+            - containerPort: 6000
+          volumeMounts:
+            - name: data-volume
+              mountPath: /christin_PV_dir
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: k8s-pvc
