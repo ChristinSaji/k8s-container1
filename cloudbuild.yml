@@ -19,11 +19,13 @@ steps:
       - --filename=service1-deployment.yml
       - --location=us-central1-a
       - --cluster=k8s-cluster
+      - --output=output/deployment
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
       - run
       - --filename=service1-service.yml
       - --location=us-central1-a
       - --cluster=k8s-cluster
+      - --output=output/service
 options:
   logging: CLOUD_LOGGING_ONLY
