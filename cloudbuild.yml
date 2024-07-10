@@ -13,12 +13,13 @@ steps:
         "push",
         "us-central1-docker.pkg.dev/k8s-assignment-428917/k8s-repo/k8s-container1:latest",
       ]
-  - name: "gcr.io/cloud-builders/kubectl"
-    args: ["apply", "-f", "service1-deployment.yml"]
-    env:
-      - "CLOUDSDK_CORE_PROJECT=k8s-assignment-428917"
-      - "CLOUDSDK_COMPUTE_REGION=us-central1"
-      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+      - run
+      - --filename=service1-deployment.yml
+      - --image=us-central1-docker.pkg.dev/k8s-assignment-428917/k8s-repo/k8s-container2:latest
+      - --location=us-central1-a
+      - --cluster=k8s-cluster
   - name: "gcr.io/cloud-builders/kubectl"
     args: ["apply", "-f", "service1-service.yml"]
     env:
