@@ -17,3 +17,5 @@ steps:
     args: ["apply", "-f", "service1-deployment.yml"]
   - name: "gcr.io/cloud-builders/kubectl"
     args: ["apply", "-f", "service1-service.yml"]
+options:
+  logging: CLOUD_LOGGING_ONLY
