@@ -13,6 +13,12 @@ steps:
         "push",
         "us-central1-docker.pkg.dev/k8s-assignment-428917/k8s-repo/k8s-container1:latest",
       ]
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        gcloud container clusters get-credentials k8s-cluster --zone us-central1-a --project k8s-assignment-428917
   - name: "gcr.io/cloud-builders/kubectl"
     args: ["apply", "-f", "service1-deployment.yml"]
   - name: "gcr.io/cloud-builders/kubectl"
