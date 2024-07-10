@@ -17,6 +17,12 @@ steps:
     args:
       - run
       - --filename=service1-deployment.yml
+      - --image=us-central1-docker.pkg.dev/k8s-assignment-428917/k8s-repo/k8s-container1:latest
+      - --location=us-central1-a
+      - --cluster=k8s-cluster
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+      - run
       - --filename=service1-service.yml
       - --image=us-central1-docker.pkg.dev/k8s-assignment-428917/k8s-repo/k8s-container1:latest
       - --location=us-central1-a
