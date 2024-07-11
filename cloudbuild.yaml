@@ -16,14 +16,14 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
       - run
-      - --filename=service1-deployment.yml
+      - --filename=service1-deployment.yaml
       - --location=us-central1-a
       - --cluster=k8s-cluster
       - --output=output/deployment
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
       - run
-      - --filename=service1-service.yml
+      - --filename=service1-service.yaml
       - --location=us-central1-a
       - --cluster=k8s-cluster
       - --output=output/service
